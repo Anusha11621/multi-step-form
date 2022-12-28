@@ -40,7 +40,7 @@ function App() {
       }
   })
   }
-  console.log(msgvalues);
+
   let [Forms,setForms] = useState(0)
 
   let buttnhandler = (operation)=>{

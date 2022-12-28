@@ -11,7 +11,7 @@ function SignUp(props) {
       <img src='https://images.unsplash.com/photo-1524865291454-215bdc75819e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80' alt='forms' className=' d-none d-lg-block' ></img>
     </div>
     <div className='col-lg-8'>
-      <div className='d-flex flex-wrap'>
+      <div className='d-flex flex-wrap m-5'>
         <div className='d-flex m-3 align-items-center'>
           <p className='bg-primary rounded p-2 pl-3 pr-3 text-light mr-2'>1</p>
           <p>SignUp</p>
@@ -89,6 +89,7 @@ function SignUp(props) {
             let para4 = document.querySelector('.addressvalidation')
             let firstname = document.getElementById('firstname')
             let lastname = document.getElementById('lastname')
+            let dob = document.getElementById('dob')
             let email = document.getElementById('email')
             let address = document.getElementById('address')
             let svg = document.querySelector('svg')
@@ -100,17 +101,16 @@ function SignUp(props) {
             }else if(props.data.firstname.length >20){
                 para.innerText = "*Name sholud be less than 20 characters" 
             }
-            
             else if(props.data.lastname === ""){
                 para1.innerText = "*Last Name is Required"
                 lastname.style.backgroundColor ='rgb(255,160,122,0.3)' 
                 lastname.style.border = '1px solid red'
             }
-
             else if(props.data.dob === ""){
                 para2.innerText = "*Date of Birth is Required"
+                dob.style.backgroundColor ='rgb(255,160,122,0.3)' 
+                dob.style.border = '1px solid red'
             }
-
             else if(props.data.email === ""){
                 para3.innerText = "*Email is Required"
                 email.style.backgroundColor ='rgb(255,160,122,0.3)' 

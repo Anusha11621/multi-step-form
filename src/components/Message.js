@@ -9,7 +9,7 @@ function Message(props) {
       <img src='https://images.unsplash.com/photo-1524865291454-215bdc75819e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80' alt='forms' className=' d-none d-lg-block' ></img>
     </div>
     <div className='col-lg-8'>
-      <div className='d-flex flex-wrap'>
+      <div className='d-flex flex-wrap m-5'>
         <div className='d-flex m-3 align-items-center'>
           <p className='bg-light rounded p-2 pl-3 pr-3 text-primary mr-2'>✓</p>
           <p>SignUp</p>
@@ -40,13 +40,16 @@ function Message(props) {
           <label htmlFor='one'>The number One Choice</label>
          </div>
          <div>
-         <input className='m-2' id='two' type={'radio'} name='check'></input>
+         <input className='m-2' id='two' type={'radio'} name='check' value={props.val.two} onChange ={props.click}></input>
           <label htmlFor='two'>The number two Choice</label>
 
-          <p className='radioerr text-danger'></p>
+          
          </div>
-        
+          
         </div>
+        <div>
+          <p className='radioerr text-danger'></p>
+          </div>
         </div>
       </div>
       <hr></hr>
