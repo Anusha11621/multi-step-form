@@ -1,24 +1,73 @@
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import SignUp from './components/SignUp';
+import Message from './components/Message';
+import Checkbox from './components/Checkbox';
 
 function App() {
+  let signupvalues = {
+    firstname: '',
+    lastname:'',
+    dob:'',
+    email:'',
+    address:''
+  }
+  let messagevalues = {
+    testarea: '',
+    one:'',
+    two:''
+  }
+  let [values,setValue] = useState(signupvalues)
+
+  let handelChangefn = (e)=>{
+      let val = e.target.id
+      setValue((prevState)=>{
+          prevState[val] = e.target.value
+          return {
+              ...prevState
+          }
+      })
+  }
+
+  let [msgvalues,setMessage] = useState(messagevalues)
+
+  let msghandelChange = (event)=>{
+    let keys = event.target.id
+    setMessage((prevState)=>{
+      prevState[keys] = event.target.value
+      return {
+          ...prevState
+      }
+  })
+  }
+  console.log(msgvalues);
+  let [Forms,setForms] = useState(0)
+
+  let buttnhandler = (operation)=>{
+    if(operation === 'increase'){
+      setForms((count)=>count+1)
+    }
+    else if(operation === 'decrease'){
+      setForms((count)=>count-1)
+    }
+  }
+  
+  let pageDisplay = ()=>{
+    if(Forms === 0){
+      return <SignUp data = {values} listener = {buttnhandler} click = {handelChangefn}/>
+    }
+    else if(Forms === 1){
+      return <Message val={msgvalues} listener = {buttnhandler} click = {msghandelChange}/>
+    }
+    else{
+      return <Checkbox listener = {buttnhandler}/>
+    }
+  }
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    < >
+    <div>{pageDisplay()}</div> 
+    </>
   );
 }
 
